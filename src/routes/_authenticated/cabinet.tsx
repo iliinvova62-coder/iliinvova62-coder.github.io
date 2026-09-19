@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { getMyAccount } from "@/lib/cabinet.functions";
@@ -38,6 +38,23 @@ function CabinetPage() {
     );
   }
 
+  if (data.role === "admin") {
+    return (
+      <CabinetShell
+        title="Кабінет адміністратора"
+        subtitle="Керуйте заявками, людьми, розкладом та оплатами школи."
+        role="admin"
+      >
+        <Link
+          to="/admin"
+          className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+        >
+          Відкрити адмін-панель
+        </Link>
+      </CabinetShell>
+    );
+  }
   if (data.role === "teacher") return <TeacherCabinet account={data} />;
   return <StudentCabinet account={data} />;
 }
+
