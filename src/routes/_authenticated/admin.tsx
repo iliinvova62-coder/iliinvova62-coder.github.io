@@ -571,7 +571,7 @@ function AdminLessonRow({
     status: string;
     group_id: string | null;
   };
-  groupName?: string;
+  groupName?: string | undefined;
   studentName: string;
   teacherName: string;
   onDone: () => void;
