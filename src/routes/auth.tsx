@@ -25,9 +25,9 @@ export const Route = createFileRoute("/auth")({
       { name: "twitter:card", content: "summary" },
     ],
   }),
-  validateSearch: (s: Record<string, unknown>) => ({
-    redirect: typeof s["redirect"] === "string" ? (s["redirect"] as string) : undefined,
-  }),
+  validateSearch: (s: Record<string, unknown>): { redirect?: string } =>
+    typeof s["redirect"] === "string" ? { redirect: s["redirect"] as string } : {},
+
   component: AuthPage,
 });
 

@@ -12,7 +12,7 @@ export function CabinetShell({
   children,
 }: {
   title: string;
-  subtitle?: string;
+  subtitle?: string | undefined;
   role: "student" | "teacher" | "admin";
   children: ReactNode;
 }) {
